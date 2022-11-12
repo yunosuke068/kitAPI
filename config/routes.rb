@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :facilities
       get "facilities/:col/:val" => "facilities#find_show"
+
+      resources :categories
+      get "categories/:val" => "categories#facilities_show"
     end
   end
 end
