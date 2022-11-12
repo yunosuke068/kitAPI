@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 1) do
+ActiveRecord::Schema[7.0].define(version: 3) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "facilities", force: :cascade do |t|
     t.string "name"
     t.string "map_url"
@@ -23,7 +29,13 @@ ActiveRecord::Schema[7.0].define(version: 1) do
     t.string "url"
     t.string "instagram"
     t.string "settlement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facility_categories", force: :cascade do |t|
     t.integer "facility_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

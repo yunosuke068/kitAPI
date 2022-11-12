@@ -12,7 +12,6 @@ class CreateFacilities < ActiveRecord::Migration[7.0]
       t.string :url, comment: 'サイト'
       t.string :instagram, comment: 'インスタグラム'
       t.string :settlement, comment: '決済方法'
-      t.integer :facility_id, comment: '施設ID'
 
       t.timestamps
     end

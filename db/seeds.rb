@@ -7,9 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'csv'
 
-list = []
 CSV.foreach("db/csv/facility_sample.csv", headers: true) do |row|
-    facility = Facility.find_by(facility_id: row['id']) || Facility.new
+    facility = Facility.new
     facility.name = row['name']
     facility.map_url = row['map_url']
     facility.business_hour = row['business_hour']
@@ -21,8 +20,18 @@ CSV.foreach("db/csv/facility_sample.csv", headers: true) do |row|
     facility.url = row['url']
     facility.instagram = row['instagram']
     facility.settlement = row['settlement']
-    facility.facility_id = row['id']
-
     facility.save
+end
 
+CSV.foreach("db/csv/category.csv", headers: true) do |row|
+    category = Category.new
+    category.name = row['name']
+    category.save
+end
+
+CSV.foreach("db/csv/facility_category.csv", headers: true) do |row|
+    facility_category = FacilityCategory.new
+    facility_category.facility_id = row['facility_id']
+    facility_category.category_id = row['category_id']
+    facility_category.save
 end
