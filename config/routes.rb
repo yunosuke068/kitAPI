@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
       resources :categories
       get "categories/:val" => "categories#facilities_show"
+
+      resources :events
     end
   end
 end

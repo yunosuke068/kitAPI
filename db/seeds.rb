@@ -35,3 +35,13 @@ CSV.foreach("db/csv/facility_category.csv", headers: true) do |row|
     facility_category.category_id = row['category_id']
     facility_category.save
 end
+
+
+CSV.foreach("db/csv/event.csv", headers: true) do |row|
+    event = Event.new
+    event.name = row['name']
+    event.description = row['description']
+    event.day = row['day']
+    event.facility_id = row['facility_id']
+    event.save
+end
